@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://TransitionShaders/IMG_20201225_202844_2.jpg" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float cursor : hint_range(0.0,100.0);
+uniform float generalSpeed : hint_range(0.0,1.0);
+uniform float rSpeed : hint_range(0.0,1.0);
+uniform float gSpeed : hint_range(0.0,1.0);
+uniform float bSpeed : hint_range(0.0,1.0);
+uniform float baseAngle;
+
+void fragment(){
+	vec4 original_color = texture(TEXTURE, UV);
+	vec3 col = original_color.rgb;
+	float sinR = sin(cursor * baseAngle * rSpeed * generalSpeed);
+	float sinG = sin(cursor * baseAngle * gSpeed * generalSpeed);
+	float sinB = sin(cursor * baseAngle * bSpeed * generalSpeed);
+	vec3 col_var = vec3(sinR,sinG,sinB);
+	col *= col_var;
+	COLOR = vec4(col.rgb, original_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/cursor = 0.0
+shader_param/generalSpeed = 1.0
+shader_param/rSpeed = 0.613
+shader_param/gSpeed = 0.229
+shader_param/bSpeed = 0.701
+shader_param/baseAngle = 0.15
+
+[node name="RAINBOWCAT" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 361.859, 222.285 )
+texture = ExtResource( 1 )
