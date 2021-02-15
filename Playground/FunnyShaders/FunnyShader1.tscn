@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://FunnyShaders/IMG_20201225_202844_2.jpg" type="Texture" id=1]
+[ext_resource path="res://FunnyShaders/FunnyShader1.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/CURSOR = 0.506
+
+[node name="FunnyShader1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -2.7598, -2.74016 )
+scale = Vector2( 2.1912, 2.1912 )
+texture = ExtResource( 1 )

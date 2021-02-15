@@ -1,0 +1,390 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://2DAnimations/DiggoIcon.png" type="Texture" id=1]
+[ext_resource path="res://2DAnimations/DiggoIconPieces.png" type="Texture" id=2]
+[ext_resource path="res://2DAnimations/SkeletonAnimation.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/BottomFace/MiddleFace:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -159.471 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skeleton2D/BottomFace/MiddleFace:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skeleton2D/TopEarL/MidEarL:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -66.8174, 71.2719 ), Vector2( -74.6528, 67.1064 ), Vector2( -75.9649, 65.9942 ), Vector2( -109.485, 13.6397 ), Vector2( -109.485, 13.6397 ), Vector2( -62.2941, 78.3952 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Skeleton2D/TopEarL/MidEarL:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 11.9653, -9.72582, 11.108, 23.1602 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Skeleton2D/TopEarR:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 97.108, -163.034 ), Vector2( 97.108, -163.034 ), Vector2( 97.108, -163.034 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Skeleton2D/TopEarR:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -6.99213, 2.81704 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Skeleton2D/BottomFace/MiddleFace/TopFace:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -175.507 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Skeleton2D/BottomFace/MiddleFace/TopFace:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -91.3151 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Skeleton2D/TopEarL/MidEarL/BottomEarL:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -13.3635, 137.198 ), Vector2( -22.0519, 135.393 ), Vector2( -58.8685, 115.419 ), Vector2( -88.618, 97.8303 ), Vector2( -88.618, 97.8303 ), Vector2( -7.15738, 87.313 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Skeleton2D/TopEarL/MidEarL/BottomEarL:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 93.7118, 119.735, 171.39, 88.4788 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Skeleton2D/BottomFace:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.890869, 158.58 ), Vector2( -0.890869, 158.58 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Skeleton2D/BottomFace:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Skeleton2D/TopEarL:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -96.217, -163.034 ), Vector2( -96.217, -163.034 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Skeleton2D/TopEarL:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.02876, -1.725, -10.6411 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Skeleton2D/TongueTop/TongueBottom:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.22049, 68.3172 ), Vector2( -0.398987, 75.4625 ), Vector2( 0.572784, 64.8769 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Skeleton2D/TongueTop/TongueBottom:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 86.1602 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Skeleton2D/TopEarR/MidEarR/BottomEarR:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 29.2801, 114.455 ), Vector2( 46.0418, 110.904 ), Vector2( 57.2293, 108.008 ), Vector2( 57.2293, 108.008 ), Vector2( 57.2293, 108.008 ), Vector2( 56.5844, 105.572 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Skeleton2D/TopEarR/MidEarR/BottomEarR:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 81.5497, 66.6035, 44.2773, 72.0045 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Skeleton2D/TopEarR/MidEarR:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61.472, 71.2719 ), Vector2( 70.9736, 72.3032 ), Vector2( 70.9736, 72.3032 ), Vector2( 94.4397, 41.5547 ), Vector2( 94.3966, 39.7734 ), Vector2( 45.5768, 84.6215 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Skeleton2D/TopEarR/MidEarR:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -12.8584, 8.73513, -24.8932, -4.79539 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Skeleton2D/TongueTop:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.890869, 65.0356 ), Vector2( 0.764874, 70.0794 ), Vector2( 0.670378, 73.8623 ), Vector2( 0.882276, 65.3796 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Skeleton2D/TongueTop:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="SkeletonAnimation" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Polygons" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2( -227.355, -205.507 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 124.818, 40.8759, 197.81, 27.7372, 251.825, 28.4672, 330.657, 40.8759, 357.664, 83.9416, 372.263, 117.518, 384.672, 177.372, 391.241, 186.861, 391.971, 213.139, 383.212, 222.628, 375.912, 258.394, 344.526, 334.307, 314.599, 358.394, 224.818, 365.693, 151.095, 359.854, 124.818, 350.365, 89.0511, 302.19, 75.9124, 270.073, 69.3431, 224.088, 61.3139, 213.139, 62.0438, 182.482, 68.6131, 177.372, 78.1022, 124.088, 95.6204, 82.4818 )
+uv = PoolVector2Array( 124.818, 40.8759, 197.81, 27.7372, 251.825, 28.4672, 330.657, 40.8759, 357.664, 83.9416, 372.263, 117.518, 384.672, 177.372, 391.241, 186.861, 391.971, 213.139, 383.212, 222.628, 375.912, 258.394, 344.526, 334.307, 314.599, 358.394, 224.818, 365.693, 151.095, 359.854, 124.818, 350.365, 89.0511, 302.19, 75.9124, 270.073, 69.3431, 224.088, 61.3139, 213.139, 62.0438, 182.482, 68.6131, 177.372, 78.1022, 124.088, 95.6204, 82.4818 )
+polygons = [ PoolIntArray( 23, 4, 3, 2, 1, 0 ), PoolIntArray( 21, 22, 23, 4, 5, 6 ), PoolIntArray( 21, 6, 7, 8, 9, 18, 19, 20 ), PoolIntArray( 18, 9, 10, 11, 15, 16, 17 ), PoolIntArray( 15, 11, 12, 13, 14 ) ]
+bones = [ NodePath("BottomFace"), PoolRealArray( 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace"), PoolRealArray( 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1 ), NodePath("BottomFace/MiddleFace/TopFace"), PoolRealArray( 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 ), NodePath("TopEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL/BottomEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR/BottomEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop/TongueBottom"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="EarL" type="Polygon2D" parent="Polygons"]
+position = Vector2( -635.689, -202.94 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 479.29, 236.686, 482.249, 178.107, 489.941, 122.485, 505.325, 79.2899, 527.219, 50.2959, 544.97, 37.8698, 528.994, 42.6036, 504.734, 62.1302, 478.107, 91.1243, 457.988, 116.568, 435.503, 166.864, 430.178, 226.627, 451.479, 250.296, 463.314, 253.254, 471.598, 250.296 )
+uv = PoolVector2Array( 479.29, 236.686, 482.249, 178.107, 489.941, 122.485, 505.325, 79.2899, 527.219, 50.2959, 544.97, 37.8698, 528.994, 42.6036, 504.734, 62.1302, 478.107, 91.1243, 457.988, 116.568, 435.503, 166.864, 430.178, 226.627, 451.479, 250.296, 463.314, 253.254, 471.598, 250.296 )
+polygons = [ PoolIntArray( 5, 4, 7, 6 ), PoolIntArray( 4, 3, 8, 7 ), PoolIntArray( 3, 2, 9, 8 ), PoolIntArray( 2, 1, 10, 9 ), PoolIntArray( 1, 0, 14, 13, 12, 11, 10 ) ]
+bones = [ NodePath("BottomFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace/TopFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL"), PoolRealArray( 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL"), PoolRealArray( 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 ), NodePath("TopEarL/MidEarL/BottomEarL"), PoolRealArray( 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 ), NodePath("TopEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR/BottomEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop/TongueBottom"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="EarR" type="Polygon2D" parent="Polygons"]
+position = Vector2( -635.689, -202.94 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 722.34, 35.6383, 748.936, 50.5319, 776.064, 74.4681, 812.234, 120.745, 828.723, 161.702, 837.234, 228.191, 818.617, 247.34, 811.702, 253.723, 801.064, 253.723, 792.553, 245.213, 787.766, 237.234, 786.638, 187.5, 780.172, 140.948, 771.983, 106.034, 759.052, 76.2931, 740.086, 53.0173 )
+uv = PoolVector2Array( 722.34, 35.6383, 748.936, 50.5319, 776.064, 74.4681, 812.234, 120.745, 828.723, 161.702, 837.234, 228.191, 818.617, 247.34, 811.702, 253.723, 801.064, 253.723, 792.553, 245.213, 787.766, 237.234, 786.638, 187.5, 780.172, 140.948, 771.983, 106.034, 759.052, 76.2931, 740.086, 53.0173 )
+polygons = [ PoolIntArray( 0, 1, 15 ), PoolIntArray( 1, 2, 14, 15 ), PoolIntArray( 2, 3, 13, 14 ), PoolIntArray( 13, 12, 4, 3 ), PoolIntArray( 12, 4, 5, 11 ), PoolIntArray( 5, 6, 7, 8, 9, 10, 11 ) ]
+bones = [ NodePath("BottomFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace/TopFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL/BottomEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR"), PoolRealArray( 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 ), NodePath("TopEarR/MidEarR"), PoolRealArray( 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 ), NodePath("TopEarR/MidEarR/BottomEarR"), PoolRealArray( 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ), NodePath("TongueTop"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop/TongueBottom"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="Tongue" type="Polygon2D" parent="Polygons"]
+position = Vector2( -627.967, -205.087 )
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton2D")
+polygon = PoolVector2Array( 579.29, 215.385, 591.716, 267.456, 602.367, 272.189, 621.302, 263.314, 636.095, 265.089, 647.929, 270.414, 657.396, 265.089, 667.456, 246.746, 671.598, 220.118, 679.29, 222.485, 671.598, 275.148, 660.355, 292.899, 649.704, 297.041, 644.379, 326.036, 631.953, 333.136, 614.201, 332.544, 605.917, 319.527, 604.142, 301.183, 594.675, 295.266, 582.84, 279.29, 573.965, 237.87, 570.414, 214.201 )
+uv = PoolVector2Array( 579.29, 215.385, 591.716, 267.456, 602.367, 272.189, 621.302, 263.314, 636.095, 265.089, 647.929, 270.414, 657.396, 265.089, 667.456, 246.746, 671.598, 220.118, 679.29, 222.485, 671.598, 275.148, 660.355, 292.899, 649.704, 297.041, 644.379, 326.036, 631.953, 333.136, 614.201, 332.544, 605.917, 319.527, 604.142, 301.183, 594.675, 295.266, 582.84, 279.29, 573.965, 237.87, 570.414, 214.201 )
+polygons = [ PoolIntArray( 2, 17, 16, 15, 14, 13, 12, 5, 4, 3 ), PoolIntArray( 21, 0, 1, 2, 17, 18, 19, 20 ), PoolIntArray( 8, 9, 10, 11, 12, 5, 6, 7 ) ]
+bones = [ NodePath("BottomFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("BottomFace/MiddleFace/TopFace"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarL/MidEarL/BottomEarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TopEarR/MidEarR/BottomEarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("TongueTop"), PoolRealArray( 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0 ), NodePath("TongueTop/TongueBottom"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ) ]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+modulate = Color( 1, 1, 1, 0.231373 )
+self_modulate = Color( 1, 1, 1, 0.184314 )
+rotation = -0.024975
+
+[node name="BottomFace" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( -0.890869, 158.58 )
+rest = Transform2D( 1, 0, 0, 1, -0.890869, 158.58 )
+
+[node name="MiddleFace" type="Bone2D" parent="Skeleton2D/BottomFace"]
+position = Vector2( 0, -159.471 )
+rest = Transform2D( 1, 0, 0, 1, 0, -159.471 )
+
+[node name="TopFace" type="Bone2D" parent="Skeleton2D/BottomFace/MiddleFace"]
+position = Vector2( 0, -175.507 )
+rotation = -1.59375
+rest = Transform2D( -0.0229545, -0.999736, 0.999736, -0.0229545, 0, -175.507 )
+
+[node name="TopEarL" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( -96.217, -163.034 )
+rotation = 0.0354085
+rest = Transform2D( 1, 0, 0, 1, -96.217, -163.034 )
+
+[node name="MidEarL" type="Bone2D" parent="Skeleton2D/TopEarL"]
+position = Vector2( -75.9649, 65.9942 )
+rotation = 0.208834
+rest = Transform2D( 1, 0, 0, 1, -66.8174, 71.2719 )
+
+[node name="BottomEarL" type="Bone2D" parent="Skeleton2D/TopEarL/MidEarL"]
+position = Vector2( -88.618, 97.8303 )
+rotation = 2.08977
+rest = Transform2D( -0.0647374, 0.997902, -0.997902, -0.0647374, -13.3635, 137.198 )
+
+[node name="TopEarR" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( 97.108, -163.034 )
+rotation = -0.122036
+rest = Transform2D( 1, 0, 0, 1, 97.108, -163.034 )
+
+[node name="MidEarR" type="Bone2D" parent="Skeleton2D/TopEarR"]
+position = Vector2( 70.9736, 72.3032 )
+rotation = -0.224421
+rest = Transform2D( 1, 0, 0, 1, 61.472, 71.2719 )
+
+[node name="BottomEarR" type="Bone2D" parent="Skeleton2D/TopEarR/MidEarR"]
+position = Vector2( 57.2293, 108.008 )
+rotation = 1.16245
+rest = Transform2D( 0.146951, 0.989144, -0.989144, 0.146951, 18.7089, 137.198 )
+
+[node name="TongueTop" type="Bone2D" parent="Skeleton2D"]
+position = Vector2( 0.882276, 65.3796 )
+rest = Transform2D( 1, 0, 0, 1, 0.890869, 65.0356 )
+
+[node name="TongueBottom" type="Bone2D" parent="Skeleton2D/TongueTop"]
+position = Vector2( 0.572784, 64.8769 )
+rotation = 1.50378
+rest = Transform2D( 0.0669677, 0.997755, -0.997755, 0.0669677, 0, 59.4905 )
+
+[node name="DiggoIcon" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.552941 )
+position = Vector2( -1.55743, 1.11642 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
