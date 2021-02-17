@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Dialogs/NarratorDialogBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dialogs/DialogTests.gd" type="Script" id=3]
+
+[node name="DialogTests" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="AbstractChar2" type="Node2D" parent="."]
+position = Vector2( 250, 100 )
+
+[node name="AbstractChar1" type="Node2D" parent="."]
+position = Vector2( -250, -200 )
+
+[node name="NarratorDialogBox" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 301.041
+margin_bottom = 301.041
+textSpeed = 0.01
+
+[node name="DialogManager" parent="." instance=ExtResource( 1 )]
+DIALOGS = [ {
+"dialog": "This is a first test for dialog, with narrator dialog box !",
+"targets": [ NodePath("../NarratorDialogBox") ]
+}, {
+"dialog": "This is a dialog that should be in more than one page : Le moulin de Božidar Ranković à Rgotina (en serbe cyrillique : Воденица Божидара Ранковића у Рготини ; en serbe latin : Vodenica Božidara Rankovića u Rgotini) est situé à Rgotina, sur le territoire de la Ville de Zaječar et dans le district de Zaječar. Il est inscrit sur la liste des monuments culturels protégés de la République de Serbie (identifiant no SK 1008)1,2. Le moulin a été construit dans la première moitié du XIXe siècle2.De plan rectangulaire, il est bâti en pierre sans enduit extérieur ; au sud-ouest s'ouvre la porte du bâtiment, dont l'encadrement est constitué de blocs en grès taillés et, sur le linteau, est gravée une main tenant une croix2 ; dans les parties inférieures du mur sud se trouvent deux ouvertures étroites ; le toit à quatre pans est recouvert de bardeaux2. À l'intérieur du moulin se trouve une salle où le meunier pouvait dormir et ses reposer2.Au sud, devant le moulin, se trouve un bâtiment plus petit, déjà à moitié détruit, constitué de deux parties et construit en rondins avec des piliers. Ce bâtiment disposait d'une cheminée2. Le moulin était alimenté en eau par la rivière Borska reka mais une usine de sable de quartz a utilisé également l'eau de la rivière et, progressivement, le moulin, situé à l'écart du cours d'eau, a été négligé2. ",
+"targets": [ NodePath("../NarratorDialogBox") ]
+} ]
+
+[node name="StartDialogsButton" type="Button" parent="."]
+margin_left = -52.1356
+margin_top = 72.3171
+margin_right = 59.8644
+margin_bottom = 92.3171
+text = "start dialog test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="dialogs_done" from="DialogManager" to="." method="_on_DialogManager_dialogs_done"]
+[connection signal="pressed" from="StartDialogsButton" to="." method="_on_StartDialogsButton_pressed"]
