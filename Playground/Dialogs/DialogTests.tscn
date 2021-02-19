@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dialogs/NarratorDialogBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Dialogs/DialogTests.gd" type="Script" id=3]
+[ext_resource path="res://Dialogs/chara2.jpg" type="Texture" id=4]
+[ext_resource path="res://Dialogs/Chara 1.jpg" type="Texture" id=5]
+[ext_resource path="res://Dialogs/chara1DialogBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Dialogs/chara2DialogBox.tscn" type="PackedScene" id=7]
 
 [node name="DialogTests" type="Node2D"]
 script = ExtResource( 3 )
@@ -11,10 +15,30 @@ script = ExtResource( 3 )
 current = true
 
 [node name="AbstractChar2" type="Node2D" parent="."]
-position = Vector2( 250, 100 )
+position = Vector2( 260.703, 86.9188 )
+
+[node name="Sprite" type="Sprite" parent="AbstractChar2"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="chara2DialogBox" parent="AbstractChar2" instance=ExtResource( 7 )]
+margin_left = -98.2636
+margin_top = -231.634
+margin_right = 101.736
+margin_bottom = -81.6337
 
 [node name="AbstractChar1" type="Node2D" parent="."]
-position = Vector2( -250, -200 )
+position = Vector2( -294.001, -71.5656 )
+
+[node name="Sprite" type="Sprite" parent="AbstractChar1"]
+scale = Vector2( -0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="chara1DialogBox" parent="AbstractChar1" instance=ExtResource( 6 )]
+margin_left = -105.511
+margin_top = -208.778
+margin_right = 94.4886
+margin_bottom = -58.778
 
 [node name="NarratorDialogBox" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5
@@ -25,13 +49,37 @@ margin_top = 301.041
 margin_bottom = 301.041
 textSpeed = 0.01
 
-[node name="DialogManager" parent="." instance=ExtResource( 1 )]
+[node name="DialogManagerNarrator" parent="." instance=ExtResource( 1 )]
 DIALOGS = [ {
 "dialog": "This is a first test for dialog, with narrator dialog box !",
 "targets": [ NodePath("../NarratorDialogBox") ]
 }, {
 "dialog": "This is a dialog that should be in more than one page : Le moulin de Božidar Ranković à Rgotina (en serbe cyrillique : Воденица Божидара Ранковића у Рготини ; en serbe latin : Vodenica Božidara Rankovića u Rgotini) est situé à Rgotina, sur le territoire de la Ville de Zaječar et dans le district de Zaječar. Il est inscrit sur la liste des monuments culturels protégés de la République de Serbie (identifiant no SK 1008)1,2. Le moulin a été construit dans la première moitié du XIXe siècle2.De plan rectangulaire, il est bâti en pierre sans enduit extérieur ; au sud-ouest s'ouvre la porte du bâtiment, dont l'encadrement est constitué de blocs en grès taillés et, sur le linteau, est gravée une main tenant une croix2 ; dans les parties inférieures du mur sud se trouvent deux ouvertures étroites ; le toit à quatre pans est recouvert de bardeaux2. À l'intérieur du moulin se trouve une salle où le meunier pouvait dormir et ses reposer2.Au sud, devant le moulin, se trouve un bâtiment plus petit, déjà à moitié détruit, constitué de deux parties et construit en rondins avec des piliers. Ce bâtiment disposait d'une cheminée2. Le moulin était alimenté en eau par la rivière Borska reka mais une usine de sable de quartz a utilisé également l'eau de la rivière et, progressivement, le moulin, situé à l'écart du cours d'eau, a été négligé2. ",
 "targets": [ NodePath("../NarratorDialogBox") ]
+}, {
+"dialog": "this is a word that is way too long to fit in one dialog box : AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+"targets": [ NodePath("../NarratorDialogBox") ]
+} ]
+
+[node name="DialogManagerCharacters" parent="." instance=ExtResource( 1 )]
+DIALOGS = [ {
+"dialog": "Let's see how dialogs works with different types !",
+"targets": [ NodePath("../NarratorDialogBox") ]
+}, {
+"dialog": "Hello !",
+"targets": [ NodePath("../AbstractChar1/chara1DialogBox") ]
+}, {
+"dialog": "Hello !",
+"targets": [ NodePath("../AbstractChar2/chara2DialogBox") ]
+}, {
+"dialog": "[rainbow freq=0.2 sat=10 val=20]Hello !!!!![/rainbow]",
+"targets": [ NodePath("../AbstractChar2/chara2DialogBox"), NodePath("../AbstractChar1/chara1DialogBox") ]
+}, {
+"dialog": "Let's test if that skips one dialog (it should not do that)",
+"targets": [ NodePath("../AbstractChar1/chara1DialogBox") ]
+}, {
+"dialog": "Did it work ?",
+"targets": [ NodePath("../AbstractChar2/chara2DialogBox") ]
 } ]
 
 [node name="StartDialogsButton" type="Button" parent="."]
@@ -43,5 +91,17 @@ text = "start dialog test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="dialogs_done" from="DialogManager" to="." method="_on_DialogManager_dialogs_done"]
+
+[node name="StartCharactersButton" type="Button" parent="."]
+margin_left = -67.8056
+margin_top = 40.2596
+margin_right = 72.1944
+margin_bottom = 60.2596
+text = "start characters test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="dialogs_done" from="DialogManagerNarrator" to="." method="_on_DialogManager_dialogs_done"]
+[connection signal="dialogs_done" from="DialogManagerCharacters" to="." method="_on_DialogManagerCharacters_dialogs_done"]
 [connection signal="pressed" from="StartDialogsButton" to="." method="_on_StartDialogsButton_pressed"]
+[connection signal="pressed" from="StartCharactersButton" to="." method="_on_StartCharactersButton_pressed"]

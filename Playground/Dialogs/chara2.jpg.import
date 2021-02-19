@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IMG_20201225_202844_2.jpg-29fd7b5cb970e15d3783f9828b6a2f31.stex"
+path="res://.import/chara2.jpg-bae020f4a1069bcdaa834bd01def15d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TransitionShaders/IMG_20201225_202844_2.jpg"
-dest_files=[ "res://.import/IMG_20201225_202844_2.jpg-29fd7b5cb970e15d3783f9828b6a2f31.stex" ]
+source_file="res://Dialogs/chara2.jpg"
+dest_files=[ "res://.import/chara2.jpg-bae020f4a1069bcdaa834bd01def15d4.stex" ]
 
 [params]
 

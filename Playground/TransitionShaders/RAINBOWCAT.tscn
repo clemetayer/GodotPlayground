@@ -1,6 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://TransitionShaders/IMG_20201225_202844_2.jpg" type="Texture" id=1]
+[ext_resource path="res://Dialogs/chara2.jpg" type="Texture" id=1]
+
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

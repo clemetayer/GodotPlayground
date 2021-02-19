@@ -9,7 +9,7 @@ var dialogStarted = false # true if dialog has started
 var dialogPages = [] # pages of dialog if the whole dialog doesn't fit in one page
 var page = 0 # current dialog page
 
-onready var RTL = $Center/Panel/TextMargin/Text # Rich text label access shortcut because it is accessed a lot
+onready var RTL = $Panel/TextMargin/Text # Rich text label access shortcut because it is accessed a lot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,7 +65,7 @@ func computeDialogPages():
 			else:
 				dialogPages.append(dialog.substr(lStringIndex,rStringIndex))
 		lStringIndex = rStringIndex
-	if(lStringIndex < dialog.length() - 1):
+	if(lStringIndex < dialog.length()):
 		dialogPages.append(dialog.substr(lStringIndex,dialog.length()))
 
 # shows another character

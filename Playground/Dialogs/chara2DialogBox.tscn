@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Dialogs/NarratorDialogBox.gd" type="Script" id=1]
+[ext_resource path="res://Dialogs/CharacterDialogBox.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -8,44 +8,36 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="NarratorDialogBox" type="Control"]
+[node name="chara2DialogBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -824.0
+margin_bottom = -450.0
+rect_min_size = Vector2( 200, 150 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -512.0
-margin_top = -200.0
-margin_right = 512.0
-rect_min_size = Vector2( 1024, 200 )
+[node name="Panel" type="Panel" parent="."]
+margin_right = 200.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 150 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Center"]
-margin_left = 162.0
-margin_top = 25.0
-margin_right = 862.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 700, 150 )
-custom_styles/panel = SubResource( 1 )
-
-[node name="TextMargin" type="MarginContainer" parent="Center/Panel"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 700, 150 )
+[node name="TextMargin" type="MarginContainer" parent="Panel"]
+margin_right = 200.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 150 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -54,10 +46,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="RichTextLabel" parent="Center/Panel/TextMargin"]
+[node name="Text" type="RichTextLabel" parent="Panel/TextMargin"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 680.0
+margin_right = 180.0
 margin_bottom = 130.0
 bbcode_enabled = true
 bbcode_text = "[center]Test[/center]"
