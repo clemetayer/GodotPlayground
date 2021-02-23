@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BBCodeThings/SleepRTL.gd" type="Script" id=1]
+
+[sub_resource type="RichTextEffect" id=1]
+script = ExtResource( 1 )
+
+[node name="TestBBCode" type="Node2D"]
+
+[node name="SleepText" type="RichTextLabel" parent="."]
+margin_left = -385.199
+margin_top = -235.502
+margin_right = -325.199
+margin_bottom = -167.502
+bbcode_enabled = true
+bbcode_text = "[sleep]Z
+Z
+Z[/sleep]"
+text = "Z
+Z
+Z"
+custom_effects = [ SubResource( 1 ) ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
