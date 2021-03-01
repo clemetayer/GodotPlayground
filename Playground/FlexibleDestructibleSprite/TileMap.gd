@@ -6,25 +6,32 @@ var viewport
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var destructible_instance = load(DESTRUCTIBLE_SPRITE_PATH).instance()
 	var TileMapRect = computeTileMapBounds()
-	var TileMapStartPos = TileMapRect.position
-	var TileMapSize = TileMapRect.size
-	viewport = createViewport(TileMapStartPos,TileMapSize)
-	get_parent().call_deferred("remove_child",self)
-	viewport.call_deferred("add_child", self)
-	position.x = TileMapSize.x/2
+	viewport = createViewport(TileMapRect.position,TileMapRect.size)
+	addTilemapToViewport(TileMapRect.size)
 	yield(VisualServer, 'frame_post_draw') # waits one frame before getting the texture, otherwise, some unexpected behaviours happens
+	createDestructibleSprite(TileMapRect.position)
+	get_parent().get_parent().get_parent().remove_child(get_parent().get_parent())
+#	get_parent().get_parent().call_deferred("queue_free") # FIXME : The texture of the viewport is linked in memory to the one in the sprite, so freeing the viewport will free the texture
+
+# creates the destructible sprite corresponding to the viewport of the tilemap
+func createDestructibleSprite(pos):
+	var destructible_instance = load(DESTRUCTIBLE_SPRITE_PATH).instance()
 	var img = viewport.get_texture()
 	img.get_data().flip_y()
-#	img.get_data().save_png("res://FlexibleDestructibleSprite/test.png") # debug
-	destructible_instance.position = TileMapStartPos
+#	img.get_data().save_png("<Path to save image>") # debug
+	destructible_instance.position = pos
 	destructible_instance.SPRITE = img
 	get_parent().get_parent().get_parent().add_child(destructible_instance)
 	destructible_instance.connect("destructible_sprite_loaded",get_tree().get_current_scene(),"destructibleLoaded")
 	destructible_instance.parseSprite()
-	get_parent().get_parent().visible = false
-	
+
+# adds tilemap as a child of the viewport
+func addTilemapToViewport(size):
+	get_parent().call_deferred("remove_child",self)
+	viewport.call_deferred("add_child", self)
+	position.x = size.x/2
+
 # function by CKO on godot forum : https://godotengine.org/qa/3276/tilemap-size
 func computeTileMapBounds():
 	var cell_bounds = get_used_rect()
