@@ -7,10 +7,11 @@ var viewport
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var TileMapRect = computeTileMapBounds()
-	viewport = createViewport(TileMapRect.position,TileMapRect.size)
+	var TileMapPosition = position
+	viewport = createViewport(TileMapPosition,TileMapRect.size)
 	addTilemapToViewport(TileMapRect.size)
 	yield(VisualServer, 'frame_post_draw') # waits one frame before getting the texture, otherwise, some unexpected behaviours happens
-	createDestructibleSprite(TileMapRect.position)
+	createDestructibleSprite(TileMapPosition)
 	get_parent().get_parent().get_parent().remove_child(get_parent().get_parent())
 #	get_parent().get_parent().call_deferred("queue_free") # FIXME : The texture of the viewport is linked in memory to the one in the sprite, so freeing the viewport will free the texture
 
@@ -31,6 +32,7 @@ func addTilemapToViewport(size):
 	get_parent().call_deferred("remove_child",self)
 	viewport.call_deferred("add_child", self)
 	position.x = size.x/2
+	position.y = 0
 
 # function by CKO on godot forum : https://godotengine.org/qa/3276/tilemap-size
 func computeTileMapBounds():
@@ -51,11 +53,3 @@ func createViewport(position,size):
 	viewportC.add_child(viewport)
 	get_parent().call_deferred("add_child",viewportC)
 	return viewport
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-#	if(Input.is_action_just_pressed("next_dialog")):
-#		var img = viewport.get_texture().get_data()
-#		img.flip_y()
-#		img.save_png("res://FlexibleDestructibleSprite/test.png")
