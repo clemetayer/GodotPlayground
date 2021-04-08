@@ -1,7 +1,5 @@
 extends Node2D
 
-# TODO : check with a sprite with odd size
-
 # Here is how it works
 # first, the sprite is converted to a bitmap, to detect the transparent and not transparent parts
 # then, one divide this sprite in max size blocks (2^TILE_SIZE_POW)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/IMG_20201225_202844_2.jpg-f4913a3d040e82489c7732b3362c2d93.stex"
+path="res://.import/Guy.png-6e62d27fc188ae4fe1676dfdba7d62a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FunnyShaders/IMG_20201225_202844_2.jpg"
-dest_files=[ "res://.import/IMG_20201225_202844_2.jpg-f4913a3d040e82489c7732b3362c2d93.stex" ]
+source_file="res://FunnyShaders/DuplicateShader/Guy.png"
+dest_files=[ "res://.import/Guy.png-6e62d27fc188ae4fe1676dfdba7d62a3.stex" ]
 
 [params]
 
