@@ -4,55 +4,31 @@
 code = "shader_type canvas_item;
 render_mode unshaded;
 
-uniform vec4 color1:hint_color;
-uniform vec4 color2:hint_color;
-uniform vec4 color3:hint_color;
-uniform vec4 color4:hint_color;
-uniform float rand_val;
-
-vec4 get_color(vec4 ori_col){
-	if(rand_val < 1.0){
-//		vec3 new_col = ori_col.rgb * color1.rgb;
-		return vec4(color1.rgb,ori_col.a);
-	}
-	else if(rand_val < 2.0){
-//		vec3 new_col = ori_col.rgb * color2.rgb;
-		return vec4(color2.rgb,ori_col.a);
-	}
-	else if(rand_val < 3.0){
-//		vec3 new_col = ori_col.rgb * color3.rgb;
-		return vec4(color3.rgb,ori_col.a);
-	}
-	else{
-//		vec3 new_col = ori_col.rgb * color4.rgb;
-		return vec4(color4.rgb,ori_col.a);
-	}
-}
+uniform vec4 color:hint_color;
 
 void fragment(){
-	COLOR = get_color(texture(TEXTURE,UV).rgba);
+	COLOR = vec4(color.rgb,texture(TEXTURE,UV).a);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/color1 = Color( 0.72549, 0.964706, 0.054902, 1 )
-shader_param/color2 = Color( 0, 0.956863, 0.933333, 1 )
-shader_param/color3 = Color( 0.956863, 0, 0.921569, 1 )
-shader_param/color4 = Color( 0.854902, 0, 0, 1 )
-shader_param/rand_val = 3.5
+shader_param/color = null
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Sprite
-
+ 
+export(Array,Color) var COLORS
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.set_material(self.get_material().duplicate(true))
 	var mat = self.get_material()
-	mat.set_shader_param(\"rand_val\",randf()*4) # FIXME : global shader ?
+	var color = COLORS[randi() % COLORS.size()]
+	mat.set_shader_param(\"color\",color) 
 
 "
 
 [node name="ShaderSprite" type="Sprite"]
 material = SubResource( 2 )
 script = SubResource( 3 )
+COLORS = [ Color( 0.945098, 1, 0, 1 ), Color( 0, 0.764706, 1, 1 ), Color( 0.054902, 1, 0, 1 ), Color( 0.992157, 0.0196078, 0.976471, 1 ), Color( 0.976471, 0.054902, 0.054902, 1 ) ]

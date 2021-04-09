@@ -608,14 +608,14 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 material = SubResource( 2 )
-position = Vector2( -175.982, 85.0048 )
+position = Vector2( -0.36346, -273.414 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
 
 [node name="Sprite2" type="Particles2D" parent="."]
 visible = false
-position = Vector2( -175.982, 85.0048 )
+position = Vector2( -0.36346, -273.414 )
 scale = Vector2( 0.5, 0.5 )
 emitting = false
 lifetime = 6.0
