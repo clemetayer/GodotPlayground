@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/Song1.gd" type="Script" id=1]
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/IntroScene.wav" type="AudioStream" id=2]
+
+[node name="Song1" type="Node"]
+script = ExtResource( 1 )
+BPM = 120
+TOTAL_BARS = 128
+BEATS_PER_BAR = 4
+LOOP_TIMES = [ [ 0, 2 ], [ 2, 4 ], [ 4, 128 ] ]
+MAIN_SONG = NodePath("Song1")
+
+[node name="Song1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

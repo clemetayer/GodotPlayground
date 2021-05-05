@@ -9,19 +9,41 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "DefaultSong",
+"language": "GDScript",
+"path": "res://SoundStuff/EnhancedSoundManager/DefaultSong.gd"
+}, {
+"base": "Node",
+"class": "MixingDeskMusic",
+"language": "GDScript",
+"path": "res://addons/mixing-desk/music/mixing_desk_music.gd"
+}, {
 "base": "RichTextEffect",
 "class": "RichTextSleep",
 "language": "GDScript",
 "path": "res://BBCodeThings/SleepRTL.gd"
+}, {
+"base": "Node",
+"class": "Song",
+"language": "GDScript",
+"path": "res://addons/mixing-desk/music/song.gd"
 } ]
 _global_script_class_icons={
-"RichTextSleep": ""
+"DefaultSong": "",
+"MixingDeskMusic": "",
+"RichTextSleep": "",
+"Song": ""
 }
 
 [application]
 
 config/name="Playground"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/mixing-desk/plugin.cfg" )
 
 [input]
 
