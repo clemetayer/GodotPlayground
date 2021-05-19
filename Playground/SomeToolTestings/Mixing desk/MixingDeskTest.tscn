@@ -12,7 +12,7 @@
 [node name="MixingDeskTest" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Music" type="Node2D" parent="."]
+[node name="Music" type="Node" parent="."]
 
 [node name="MixingDeskMusic" type="Node" parent="Music"]
 script = ExtResource( 3 )

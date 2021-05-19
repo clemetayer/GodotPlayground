@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/songs/scenes/DefaultSong.gd" type="Script" id=1]
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1MainLoops.gd" type="Script" id=2]
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/songs/res/IntroScene/UltraSoft.wav" type="AudioStream" id=3]
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/songs/res/IntroScene/OtherParts.wav" type="AudioStream" id=4]
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/songs/res/IntroScene/Piano.wav" type="AudioStream" id=5]
+
+[node name="Song1" type="Node"]
+script = ExtResource( 1 )
+BPM = 120
+BEATS_PER_BAR = 4
+MAIN_LOOPS = NodePath("MainLoops")
+NAME = "Song1"
+
+[node name="MainLoops" type="Node" parent="."]
+script = ExtResource( 2 )
+LOOPS = [ {
+"busName": "Master",
+"isLeadTrack": true,
+"play": false,
+"startBar": 0,
+"track": "Piano"
+}, {
+"busName": "Master",
+"isLeadTrack": true,
+"play": false,
+"startBar": 0,
+"track": "UltraSoft"
+}, {
+"busName": "Master",
+"isLeadTrack": false,
+"play": false,
+"startBar": 0,
+"track": "OtherParts"
+} ]
+
+[node name="Piano" type="AudioStreamPlayer" parent="MainLoops"]
+stream = ExtResource( 5 )
+
+[node name="UltraSoft" type="AudioStreamPlayer" parent="MainLoops"]
+stream = ExtResource( 3 )
+
+[node name="OtherParts" type="AudioStreamPlayer" parent="MainLoops"]
+stream = ExtResource( 4 )
+
+[connection signal="finished" from="MainLoops/Piano" to="MainLoops" method="_on_Piano_finished"]
+[connection signal="finished" from="MainLoops/UltraSoft" to="MainLoops" method="_on_UltraSoft_finished"]
+[connection signal="finished" from="MainLoops/OtherParts" to="MainLoops" method="_on_OtherParts_finished"]

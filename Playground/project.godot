@@ -12,12 +12,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "DefaultSong",
 "language": "GDScript",
-"path": "res://SoundStuff/EnhancedSoundManager/DefaultSong.gd"
+"path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/DefaultSong.gd"
+}, {
+"base": "Node",
+"class": "MainLoopsTemplate",
+"language": "GDScript",
+"path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/MainLoopsTemplate.gd"
 }, {
 "base": "Node",
 "class": "MixingDeskMusic",
 "language": "GDScript",
 "path": "res://addons/mixing-desk/music/mixing_desk_music.gd"
+}, {
+"base": "Resource",
+"class": "MusicData",
+"language": "GDScript",
+"path": "res://addons/MusicManager/SaveData/SaveData.gd"
 }, {
 "base": "RichTextEffect",
 "class": "RichTextSleep",
@@ -28,12 +38,26 @@ _global_script_classes=[ {
 "class": "Song",
 "language": "GDScript",
 "path": "res://addons/mixing-desk/music/song.gd"
+}, {
+"base": "Node",
+"class": "SongTemplate",
+"language": "GDScript",
+"path": "res://SomeToolTestings/Mixing desk/Decorator/SongTemplate.gd"
+}, {
+"base": "Node",
+"class": "TransitionTemplate",
+"language": "GDScript",
+"path": "res://SomeToolTestings/Mixing desk/Decorator/TransitionTemplate.gd"
 } ]
 _global_script_class_icons={
 "DefaultSong": "",
+"MainLoopsTemplate": "",
 "MixingDeskMusic": "",
+"MusicData": "",
 "RichTextSleep": "",
-"Song": ""
+"Song": "",
+"SongTemplate": "",
+"TransitionTemplate": ""
 }
 
 [application]

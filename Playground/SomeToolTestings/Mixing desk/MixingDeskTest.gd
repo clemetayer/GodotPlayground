@@ -1,5 +1,13 @@
 extends Node2D
 
+# TODO : decorator design pattern
+#	- use a special Node containing the song + various informations (like switching on core_loop_finished)
+#		- Loop parts (as different streams ?, different songs should be better)
+#		- Behaviour on loop finished ?
+#	- use a special sound manager to handle MDM
+#		- transitions between different songs
+
+
 onready var MDM = get_node("Music/MixingDeskMusic")
 var currentSong
 
@@ -9,11 +17,9 @@ func _ready():
 	MDM.play("MainMenu")
 	currentSong = "MainMenu"
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_Song1Button_pressed():
 	MDM.queue_bar_transition("Song1P1")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SomeToolTestings/Mixing desk/Decorator/Song1.gd" type="Script" id=1]
+[ext_resource path="res://addons/mixing-desk/music/containers/core_cont.gd" type="Script" id=2]
+[ext_resource path="res://addons/mixing-desk/music/song.gd" type="Script" id=3]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/IntroScene/IntroSceneP2.wav" type="AudioStream" id=4]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/IntroScene/IntroSceneP3.wav" type="AudioStream" id=5]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/IntroScene/IntroSceneP1.wav" type="AudioStream" id=6]
+
+[node name="Song1" type="Node"]
+script = ExtResource( 1 )
+LOOP_PARTS = [ NodePath("Loop1"), NodePath("Loop2"), NodePath("Loop3") ]
+NAME = "Song1"
+PLAY_STYLE = 1
+DEFAULT_BUS = "MDMTests1"
+
+[node name="Loop1" type="Node" parent="."]
+script = ExtResource( 3 )
+bars = 8
+
+[node name="CoreContainer" type="Node" parent="Loop1"]
+script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Loop1/CoreContainer"]
+stream = ExtResource( 6 )
+
+[node name="Loop2" type="Node" parent="."]
+script = ExtResource( 3 )
+bars = 8
+
+[node name="CoreContainer" type="Node" parent="Loop2"]
+script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Loop2/CoreContainer"]
+stream = ExtResource( 4 )
+
+[node name="Loop3" type="Node" parent="."]
+script = ExtResource( 3 )
+bars = 80
+
+[node name="CoreContainer" type="Node" parent="Loop3"]
+script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Loop3/CoreContainer"]
+stream = ExtResource( 5 )

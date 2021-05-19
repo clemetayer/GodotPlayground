@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.gd" type="Script" id=1]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+FADE_TYPE = 2
+FADE_IN_TIME = 2.0
+FADE_OUT_TIME = 2.0

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SomeToolTestings/Mixing desk/Decorator/MDMManager.gd" type="Script" id=1]
+[ext_resource path="res://addons/mixing-desk/music/mixing_desk_music.gd" type="Script" id=2]
+
+[node name="MDMManager" type="Node"]
+script = ExtResource( 1 )
+MDM_PATH = NodePath("MixingDeskMusic")
+BUS = "MDMTests1"
+
+[node name="Tweens" type="Node" parent="."]
+
+[node name="FadeIn" type="Tween" parent="Tweens"]
+
+[node name="FadeOut" type="Tween" parent="Tweens"]
+
+[node name="MixingDeskMusic" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[connection signal="tween_all_completed" from="Tweens/FadeIn" to="." method="_on_FadeIn_tween_all_completed"]
+[connection signal="bar_changed" from="MixingDeskMusic" to="." method="_on_MixingDeskMusic_bar_changed"]
+[connection signal="beat" from="MixingDeskMusic" to="." method="_on_MixingDeskMusic_beat"]
+[connection signal="core_loop_finished" from="MixingDeskMusic" to="." method="_on_MixingDeskMusic_core_loop_finished"]
+[connection signal="shuffle" from="MixingDeskMusic" to="." method="_on_MixingDeskMusic_shuffle"]
+[connection signal="song_changed" from="MixingDeskMusic" to="." method="_on_MixingDeskMusic_song_changed"]
