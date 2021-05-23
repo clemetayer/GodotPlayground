@@ -19,25 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/MainLoopsTemplate.gd"
 }, {
-"base": "Node",
-"class": "MixingDeskMusic",
-"language": "GDScript",
-"path": "res://addons/mixing-desk/music/mixing_desk_music.gd"
-}, {
-"base": "Resource",
-"class": "MusicData",
-"language": "GDScript",
-"path": "res://addons/MusicManager/SaveData/SaveData.gd"
-}, {
 "base": "RichTextEffect",
 "class": "RichTextSleep",
 "language": "GDScript",
 "path": "res://BBCodeThings/SleepRTL.gd"
-}, {
-"base": "Node",
-"class": "Song",
-"language": "GDScript",
-"path": "res://addons/mixing-desk/music/song.gd"
 }, {
 "base": "Node",
 "class": "SongTemplate",
@@ -52,10 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "DefaultSong": "",
 "MainLoopsTemplate": "",
-"MixingDeskMusic": "",
-"MusicData": "",
 "RichTextSleep": "",
-"Song": "",
 "SongTemplate": "",
 "TransitionTemplate": ""
 }
@@ -67,7 +49,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/mixing-desk/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/mixing-desk/plugin.cfg" )
 
 [input]
 

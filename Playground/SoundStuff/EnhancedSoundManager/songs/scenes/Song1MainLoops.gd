@@ -1,6 +1,8 @@
 tool
 extends MainLoopsTemplate
 
+var lastPianoTime = 0
+
 # check if some tracks should be disabled
 func _process(_delta):
 	if not Engine.editor_hint:
@@ -8,6 +10,13 @@ func _process(_delta):
 
 # stops or plays a track depending on another
 func handleTrackDependencies():
+	if($Piano.playing and 
+		not $UltraSoft.playing and 
+		not $OtherParts.playing):
+			if(lastPianoTime > $Piano.get_playback_position()):
+				$UltraSoft.play(0.0)
+			else:
+				lastPianoTime = $Piano.get_playback_position()
 	if($OtherParts.playing):
 		var time = $OtherParts.get_playback_position()
 		if(time >= 96.0 and time <= 112):
@@ -20,18 +29,3 @@ func handleTrackDependencies():
 		else:
 			if(not $UltraSoft.playing and LOOPS[1].play):
 				$UltraSoft.play(0.0)
-
-
-func _on_Piano_finished():
-	if(not $UltraSoft.playing and not $OtherParts.playing): # directly after first part
-		$UltraSoft.play(0.0)
-	if(isPlaying("Piano")):
-		$Piano.play(0.0)
-
-func _on_UltraSoft_finished():
-	if(isPlaying("UltraSoft")):
-		$UltraSoft.play(0.0)
-
-func _on_OtherParts_finished():
-	if(isPlaying("OtherParts")):
-		$OtherParts.play(0.0)

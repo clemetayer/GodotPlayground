@@ -1,6 +1,8 @@
 # Added things
 **.wav
 **.ogg
+**.import
+Playground/addons/
 
 # Godot-specific ignores
 .import/

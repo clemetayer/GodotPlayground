@@ -1,9 +1,5 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 func _on_MainMenu_pressed():
 	var song1load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1.tscn")
 	var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/mixing-desk/music/song.gd" type="Script" id=1]
+[ext_resource path="res://addons/mixing-desk/music/containers/core_cont.gd" type="Script" id=2]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/scenes/SongInfo.gd" type="Script" id=3]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/res/IntroScene/Piano.wav" type="AudioStream" id=4]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/res/IntroScene/UltraSoft.wav" type="AudioStream" id=5]
+[ext_resource path="res://SomeToolTestings/Mixing desk/songs/res/IntroScene/OtherParts.wav" type="AudioStream" id=6]
+[ext_resource path="res://addons/mixing-desk/music/mixing_desk_music.gd" type="Script" id=7]
+
+[node name="Song1" type="Node"]
+script = ExtResource( 3 )
+SONG_INFO = [ {
+"name": "Piano",
+"play": false,
+"startBar": 0
+}, {
+"name": "UltraSoft",
+"play": false,
+"startBar": 8
+}, {
+"name": "OtherParts",
+"play": false,
+"startBar": 16
+} ]
+NAME = "IntroSong"
+
+[node name="MDM" type="Node" parent="."]
+script = ExtResource( 7 )
+play_mode = 1
+
+[node name="IntroSong" type="Node" parent="MDM"]
+script = ExtResource( 1 )
+tempo = 120
+bars = 96
+beats_in_bar = 4
+
+[node name="CoreContainer" type="Node" parent="MDM/IntroSong"]
+script = ExtResource( 2 )
+
+[node name="Piano" type="AudioStreamPlayer" parent="MDM/IntroSong/CoreContainer"]
+stream = ExtResource( 4 )
+
+[node name="UltraSoft" type="AudioStreamPlayer" parent="MDM/IntroSong/CoreContainer"]
+stream = ExtResource( 5 )
+
+[node name="OtherParts" type="AudioStreamPlayer" parent="MDM/IntroSong/CoreContainer"]
+stream = ExtResource( 6 )

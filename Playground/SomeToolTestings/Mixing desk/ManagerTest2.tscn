@@ -21,60 +21,59 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-margin_left = 387.0
-margin_top = 275.0
-margin_right = 636.0
-margin_bottom = 325.0
+margin_left = 348.0
+margin_top = 273.0
+margin_right = 675.0
+margin_bottom = 327.0
 custom_constants/separation = 10
 
 [node name="Song1" type="VBoxContainer" parent="UI/HBoxContainer"]
-margin_right = 185.0
-margin_bottom = 50.0
+margin_right = 263.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
 [node name="Song1Button" type="Button" parent="UI/HBoxContainer/Song1"]
-margin_right = 185.0
+margin_right = 263.0
 margin_bottom = 20.0
 text = "Song 1"
 
-[node name="Loops" type="HBoxContainer" parent="UI/HBoxContainer/Song1"]
+[node name="Tracks" type="HBoxContainer" parent="UI/HBoxContainer/Song1"]
 margin_top = 30.0
-margin_right = 185.0
-margin_bottom = 50.0
+margin_right = 263.0
+margin_bottom = 54.0
 custom_constants/separation = 10
 
-[node name="Loop1" type="Button" parent="UI/HBoxContainer/Song1/Loops"]
-margin_right = 55.0
-margin_bottom = 20.0
-text = "Loop 1"
+[node name="Piano" type="CheckBox" parent="UI/HBoxContainer/Song1/Tracks"]
+margin_right = 63.0
+margin_bottom = 24.0
+text = "Piano"
 
-[node name="Loop2" type="Button" parent="UI/HBoxContainer/Song1/Loops"]
-margin_left = 65.0
-margin_right = 120.0
-margin_bottom = 20.0
-text = "Loop 2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UltraSoft" type="CheckBox" parent="UI/HBoxContainer/Song1/Tracks"]
+margin_left = 73.0
+margin_right = 156.0
+margin_bottom = 24.0
+text = "UltraSoft"
 
-[node name="Loop3" type="Button" parent="UI/HBoxContainer/Song1/Loops"]
-margin_left = 130.0
-margin_right = 185.0
-margin_bottom = 20.0
-text = "Loop 3"
+[node name="OtherParts" type="CheckBox" parent="UI/HBoxContainer/Song1/Tracks"]
+margin_left = 166.0
+margin_right = 263.0
+margin_bottom = 24.0
+text = "OtherParts"
 
 [node name="Song2" type="VBoxContainer" parent="UI/HBoxContainer"]
-margin_left = 195.0
-margin_right = 249.0
-margin_bottom = 50.0
+margin_left = 273.0
+margin_right = 327.0
+margin_bottom = 54.0
 
 [node name="Song2Button" type="Button" parent="UI/HBoxContainer/Song2"]
 margin_right = 54.0
-margin_bottom = 20.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Song 2"
 
 [connection signal="pressed" from="UI/HBoxContainer/Song1/Song1Button" to="." method="_on_Song1Button_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/Song1/Loops/Loop1" to="." method="_on_Loop1_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/Song1/Loops/Loop2" to="." method="_on_Loop2_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/Song1/Loops/Loop3" to="." method="_on_Loop3_pressed"]
+[connection signal="toggled" from="UI/HBoxContainer/Song1/Tracks/Piano" to="." method="_on_Piano_toggled"]
+[connection signal="toggled" from="UI/HBoxContainer/Song1/Tracks/UltraSoft" to="." method="_on_UltraSoft_toggled"]
+[connection signal="toggled" from="UI/HBoxContainer/Song1/Tracks/OtherParts" to="." method="_on_OtherParts_toggled"]
 [connection signal="pressed" from="UI/HBoxContainer/Song2/Song2Button" to="." method="_on_Song2Button_pressed"]
