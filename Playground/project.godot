@@ -15,9 +15,9 @@ _global_script_classes=[ {
 "path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/DefaultSong.gd"
 }, {
 "base": "Node",
-"class": "MainLoopsTemplate",
+"class": "MainTracksTemplate",
 "language": "GDScript",
-"path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/MainLoopsTemplate.gd"
+"path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/MainTracksTemplate.gd"
 }, {
 "base": "RichTextEffect",
 "class": "RichTextSleep",
@@ -36,7 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DefaultSong": "",
-"MainLoopsTemplate": "",
+"MainTracksTemplate": "",
 "RichTextSleep": "",
 "SongTemplate": "",
 "TransitionTemplate": ""
@@ -46,6 +46,10 @@ _global_script_class_icons={
 
 config/name="Playground"
 config/icon="res://icon.png"
+
+[autoload]
+
+SignalManager="*res://SignalManager.tscn"
 
 [editor_plugins]
 

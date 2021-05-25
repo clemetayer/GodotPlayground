@@ -16,42 +16,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 395.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 351.0
 margin_top = 273.0
-margin_right = 628.0
+margin_right = 672.0
 margin_bottom = 327.0
-custom_constants/separation = 10
 
-[node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_right = 233.0
-margin_bottom = 20.0
-text = "Main menu"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 30.0
-margin_right = 233.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 263.0
 margin_bottom = 54.0
 custom_constants/separation = 10
 
-[node name="Track1" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_right = 71.0
-margin_bottom = 24.0
-text = "Loop 1"
+[node name="Song 1" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 263.0
+margin_bottom = 20.0
+text = "Song 1"
 
-[node name="Track2" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 81.0
-margin_right = 152.0
-margin_bottom = 24.0
-text = "Loop 2"
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 263.0
+margin_bottom = 54.0
+custom_constants/separation = 10
 
-[node name="Track3" type="CheckBox" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 162.0
-margin_right = 233.0
+[node name="Piano" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 63.0
 margin_bottom = 24.0
-text = "Loop 3"
+text = "Piano"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/HBoxContainer/Track1" to="." method="_on_Track1_toggled"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/HBoxContainer/Track2" to="." method="_on_Track2_toggled"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/HBoxContainer/Track3" to="." method="_on_Track3_toggled"]
+[node name="UltraSoft" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 156.0
+margin_bottom = 24.0
+text = "UltraSoft"
+
+[node name="OtherParts" type="CheckBox" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 166.0
+margin_right = 263.0
+margin_bottom = 24.0
+text = "OtherParts"
+
+[node name="Song2" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 267.0
+margin_right = 321.0
+margin_bottom = 54.0
+text = "Song 2"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Song 1" to="." method="_on_Song_1_pressed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/Piano" to="." method="_on_Piano_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/UltraSoft" to="." method="_on_UltraSoft_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/OtherParts" to="." method="_on_OtherParts_toggled"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Song2" to="." method="_on_Song2_pressed"]

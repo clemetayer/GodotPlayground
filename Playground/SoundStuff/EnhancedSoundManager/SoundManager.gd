@@ -2,24 +2,25 @@ extends Node
 # inspired from Godot mixing desk : https://github.com/kyzfrintin/Godot-Mixing-Desk
 
 # TODO : implement signal song done
-# TODO : implement songs that can be on various final buses
-# ARCHITECTURE : Using direct references to main loop in songs, which is not fine
+# TODO : implement loop and play_once
+# ARCHITECTURE : let the transition setup the tween ?
+# FIXME : """loud""" noise on song start/end
+# TODO : song changed signal
+# TODO : implement on next beat transition
 
 enum play_style {play_once,loop}
+enum effects {amplifier,filter}
 
 export(String) var BGM_BUS = "Master"
 
-#signal beat(beat)
-#signal bar(bar)
 #signal song_changed(old_song,new_song)
 
 var queue = []
+var bus_array = []
 var is_playing : bool
 var switch_song_lock = false
 var current_song : DefaultSong
 var current_play_style
-var amplifier_effect_index = 0
-var filter_effect_index = 1
 
 ##### USER FUNCTIONS #####
 
@@ -49,19 +50,15 @@ func handleQueue() -> void:
 func updateSong(song : DefaultSong, transition : TransitionTemplate):
 	var diff_tracks = $MainMixingDesk.compareSongsPlayValues(song,$MainMixingDesk.getCurrent())
 	for track in diff_tracks:
-		var bus_dup_index = 0 # in case many tracks transitionning
-		while(AudioServer.get_bus_index("T:"+ song.NAME + "-" + str(bus_dup_index)) != -1):
-			bus_dup_index += 1
-		var transition_bus_name = createTransitionBus("T:"+ song.NAME + "-" + str(bus_dup_index), song.getBus(track))
-		updateTrack(song,track,transition,transition_bus_name)
+		updateTrack(song,track,transition,getBusTrack(track))
 		current_song.setPlay(track,song.isPlaying(track))
 
 # creates a temporary bus to handle transitionning tracks
 func createTransitionBus(name : String, send_to : String) -> String:
 	var bus_index = AudioServer.bus_count # Note : bus indexes starts at 0
 	AudioServer.add_bus(bus_index)
-	AudioServer.add_bus_effect(bus_index,AudioEffectAmplify.new(),amplifier_effect_index)
-	AudioServer.add_bus_effect(bus_index,AudioEffectFilter.new(),filter_effect_index)
+	AudioServer.add_bus_effect(bus_index,AudioEffectAmplify.new(),effects.amplifier)
+	AudioServer.add_bus_effect(bus_index,AudioEffectFilter.new(),effects.filter)
 	AudioServer.set_bus_name(bus_index,name)
 	AudioServer.set_bus_send(bus_index,send_to)
 	return name
@@ -69,29 +66,20 @@ func createTransitionBus(name : String, send_to : String) -> String:
 # updates the track at track_index
 func updateTrack(song : DefaultSong, track : String, transition : TransitionTemplate, transition_bus_name : String):
 	var tween : Tween
-	var final_bus_name = song.getBus(track)
 	var play = song.isPlaying(track)
 	if(play): # should transition in
 		var transition_time = computeTransitionTime(transition,song.BPM,song.BEATS_PER_BAR)
 		tween = initTransitionTween(true,transition,transition_bus_name,transition_time)
-		$MainMixingDesk.startTrackOnBus(track,transition_bus_name)
-#		main_loops.startTrackOnBus(main_loops.LOOPS[track_index].track,transition_bus_name)
+		$MainMixingDesk.startTrack(track)
 	else: # should transition out
 		var transition_time = computeTransitionTime(transition,song.BPM,song.BEATS_PER_BAR)
 		tween = initTransitionTween(false,transition,transition_bus_name,transition_time)
-		$MainMixingDesk.setBusOnTrack(track,transition_bus_name)
-#		main_loops.setBusOnTrack(main_loops.LOOPS[track_index].track,transition_bus_name)
 	$Tweens.add_child(tween)
 	var _val = tween.start()
 	yield(tween,"tween_all_completed") # waits for the fade in/out to finish
 	tween.queue_free()
-	if(play): # it was a transition in
-		$MainMixingDesk.setBusOnTrack(track,final_bus_name) # sets to its final bus
-#		main_loops.setBusOnTrack(main_loops.LOOPS[track_index].track,final_bus_name) # sets to its final bus
-	else: # it was a transition out
+	if(not play): # it was a transition in
 		$MainMixingDesk.stopTrack(track)
-#		main_loops.stopTrack(main_loops.LOOPS[track_index].track)
-	AudioServer.remove_bus(AudioServer.get_bus_index(transition_bus_name))
 
 # skips to the next song with specific transition type
 func switchSong(song : DefaultSong, transition : TransitionTemplate) -> void :
@@ -102,26 +90,42 @@ func switchSong(song : DefaultSong, transition : TransitionTemplate) -> void :
 
 # transitions out the song if needed, returns true if fade out tween is being used for this
 func removeSongs(transition : TransitionTemplate) -> void:
-	var transition_bus_name = createTransitionBus("R:" + current_song.NAME, BGM_BUS)
 	var transition_time = computeTransitionTime(transition,current_song.BPM, current_song.BEATS_PER_BAR)
-	var tween = initTransitionTween(false,transition,transition_bus_name,transition_time)
+	var tween : Tween
+	for bus in bus_array:
+		tween = initTransitionTween(false,transition,bus.busName,transition_time)
 	$Tweens.add_child(tween)
-	tween.start()
+	var _val = tween.start()
 	yield(tween,"tween_all_completed")
 	tween.queue_free()
 	$MainMixingDesk.freeCurrent()
+	for bus in bus_array:
+		AudioServer.remove_bus(AudioServer.get_bus_index(bus.busName))
+	bus_array = []
 	current_song.queue_free()
 	current_song = null
 
 # adds the songs in song, and plays it with transition_type
 func addSong(song : DefaultSong, transition : TransitionTemplate) -> void:
-	$MainMixingDesk.play(song) # duplicates and plays main track
 	current_song = song
-	var transition_bus_name = createTransitionBus("A:" + song.NAME,BGM_BUS)
+	var _err = current_song.connect("beat",self,"onBeat")
+	_err = current_song.connect("bar",self,"onBar")
+	var tracks = song.getTrackList()
+	var tween : Tween
 	var transition_time = computeTransitionTime(transition,song.BPM,song.BEATS_PER_BAR) 
-	var tween = initTransitionTween(true,transition,transition_bus_name,transition_time)
+	for track in tracks: # create a transition bus for each track (for further transitions) and sets the track to the bus
+		bus_array.append({
+			"trackName":track.name,
+			"busName":song.name + ":" + track.name,
+			"sendTo":track.bus
+		})
+		var bus_name = createTransitionBus(song.name + ":" + track.name, track.bus)
+		song.setBusOnTrack(track.name,bus_name)
+		tween = initTransitionTween(true,transition,bus_name,transition_time,tween)
+	redirectTracksBusDefault()
 	$Tweens.add_child(tween)
-	tween.start()
+	var _val = tween.start()
+	$MainMixingDesk.play(song) # duplicates and plays main track
 	yield(tween,"tween_all_completed")
 	tween.queue_free()
 
@@ -142,21 +146,30 @@ func computeTransitionTime(transition : TransitionTemplate, tempo : int, beats_p
 	return transition_time
 
 # initializes the tween for the transition (does not start it)
-func initTransitionTween(fade_in : bool, transition : TransitionTemplate, bus_name : String, transition_time : Array) -> Tween:
-	var tween = Tween.new()
+func initTransitionTween(fade_in : bool, transition : TransitionTemplate, bus_name : String, transition_time : Array, custom_tween : Tween = null) -> Tween:
+	var tween : Tween
+	if(custom_tween == null):
+		tween = Tween.new()
+	else:
+		tween = custom_tween
 	if(fade_in): # fade in
 		# sets the fade
 		match(transition.FADE_TYPE):
 			TransitionTemplate.fade_type.instant:
 				pass
 			TransitionTemplate.fade_type.volume:
-				pass
-			TransitionTemplate.fade_type.filter:
-				tween.interpolate_property(
-					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), filter_effect_index),
-					"cutoff_hz",
-					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), filter_effect_index).cutoff_hz,
+				var _val = tween.interpolate_property(
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name),effects.amplifier),
+					"volume_db",
+					-50.0,
 					0,
+					transition_time[0])
+			TransitionTemplate.fade_type.filter:
+				var _val = tween.interpolate_property(
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter),
+					"cutoff_hz",
+					0,
+					10000,
 					transition_time[0])
 	else: # fade out
 		# sets the fade
@@ -164,15 +177,38 @@ func initTransitionTween(fade_in : bool, transition : TransitionTemplate, bus_na
 			TransitionTemplate.fade_type.instant:
 				pass
 			TransitionTemplate.fade_type.volume:
-				pass
+				var _val = tween.interpolate_property(
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name),effects.amplifier),
+					"volume_db",
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.amplifier).volume_db,
+					-50.0,
+					transition_time[1])
 			TransitionTemplate.fade_type.filter:
-				tween.interpolate_property(
-					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), filter_effect_index),
+				var _val = tween.interpolate_property(
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter),
 					"cutoff_hz",
-					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), filter_effect_index).cutoff_hz,
+					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter).cutoff_hz,
 					0,
 					transition_time[1])
 	return tween
+
+# redirects all the buses declared in bus_array
+func redirectTracksBusTo(redirect : String) -> void:
+	for bus in bus_array:
+		AudioServer.set_bus_send(AudioServer.get_bus_index(bus.busName),redirect)
+
+# resets the all the buses declared in bus_array to their default send to value
+func redirectTracksBusDefault() -> void:
+	for bus in bus_array:
+		AudioServer.set_bus_send(AudioServer.get_bus_index(bus.busName),bus.sendTo)
+
+# returns the bus corresponding to the track
+func getBusTrack(track : String) -> String:
+	for bus in bus_array:
+		if(bus.trackName == track):
+			return bus.busName
+	printerr("track %s not found in bus array !" % track)
+	return BGM_BUS
 
 ##### PROCESSING #####
 
@@ -183,3 +219,28 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	handleQueue()
+
+##### DEBUG #####
+# on beat
+func onBeat(number : int):
+	print("beat : %d" % number)
+
+# on bar
+func onBar(number : int):
+	print("bar : %d" % number)
+
+# shows every bus and tracks buses
+func showBuses():
+	print("========================")
+	print("----------- buses -----------")
+	for i in range(AudioServer.get_bus_count()):
+		print("Bus %s sends to %s" % [AudioServer.get_bus_name(i),AudioServer.get_bus_send(i)])
+	print("----------- tracks -----------")
+	var current_streams = current_song.getTrackList()
+	for track in current_streams:
+		print("Track %s sends to %s" % [track.name,track.bus])
+	print("========================")
+
+# function at each tween step
+func tweenStep(object: Object, key: NodePath, elapsed: float, value: Object):
+	print("Object %s at path %s has value %s. Time elapsed : %f" % [object,key,value,elapsed])

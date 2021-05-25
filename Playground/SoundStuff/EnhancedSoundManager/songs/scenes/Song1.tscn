@@ -10,36 +10,30 @@
 script = ExtResource( 1 )
 BPM = 120
 BEATS_PER_BAR = 4
-MAIN_LOOPS = NodePath("MainLoops")
+MAIN_TRACKS = NodePath("MainTracks")
 NAME = "Song1"
 
-[node name="MainLoops" type="Node" parent="."]
+[node name="MainTracks" type="Node" parent="."]
 script = ExtResource( 2 )
-LOOPS = [ {
-"busName": "Master",
+TRACKS = [ {
 "isLeadTrack": true,
-"play": false,
-"startBar": 0,
-"track": "Piano"
+"name": "Piano",
+"play": false
 }, {
-"busName": "Master",
-"isLeadTrack": true,
-"play": false,
-"startBar": 0,
-"track": "UltraSoft"
-}, {
-"busName": "Master",
 "isLeadTrack": false,
-"play": false,
-"startBar": 0,
-"track": "OtherParts"
+"name": "UltraSoft",
+"play": false
+}, {
+"isLeadTrack": false,
+"name": "OtherParts",
+"play": false
 } ]
 
-[node name="Piano" type="AudioStreamPlayer" parent="MainLoops"]
+[node name="Piano" type="AudioStreamPlayer" parent="MainTracks"]
 stream = ExtResource( 3 )
 
-[node name="UltraSoft" type="AudioStreamPlayer" parent="MainLoops"]
+[node name="UltraSoft" type="AudioStreamPlayer" parent="MainTracks"]
 stream = ExtResource( 5 )
 
-[node name="OtherParts" type="AudioStreamPlayer" parent="MainLoops"]
+[node name="OtherParts" type="AudioStreamPlayer" parent="MainTracks"]
 stream = ExtResource( 4 )

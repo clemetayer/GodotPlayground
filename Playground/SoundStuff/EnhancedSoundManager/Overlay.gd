@@ -42,18 +42,6 @@ func playCurrent() -> void:
 		song.play()
 		playing = true
 
-# starts the specified track on the specified bus
-func startTrackOnBus(track:String,bus:String) -> void:
-	var song = get_node_or_null(current_song)
-	if(song != null):
-		song.startTrackOnBus(track,bus)
-
-# sets the specified track on the specified bus
-func setBusOnTrack(track:String,bus:String) -> void:
-	var song = get_node_or_null(current_song)
-	if(song != null):
-		song.setBusOnTrack(track,bus)
-
 # stops the specified track
 func stopTrack(track:String) -> void:
 	var song = get_node_or_null(current_song)

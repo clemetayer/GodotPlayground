@@ -4,6 +4,6 @@
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
-FADE_TYPE = 2
+FADE_TYPE = 1
 FADE_IN_TIME = 2.0
 FADE_OUT_TIME = 2.0
