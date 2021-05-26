@@ -8,7 +8,7 @@ func _ready():
 
 func _on_Song_1_pressed():
 	var song1load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1.tscn")
-	var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")
+	var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.tscn")
 	var loop0song = song1load.instance()
 	loop0song.setPlay("Piano",true)
 	loop0song.setPlay("UltraSoft",true)
@@ -20,7 +20,7 @@ func _on_Song_1_pressed():
 
 func _on_Song2_pressed():
 	var song2load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song2.tscn")
-	var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")
+	var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.tscn")
 	var loop0song = song2load.instance()
 	loop0song.setPlay("MainMenu",true)
 	$SoundManager.addSongToQueue(loop0song,transition1load.instance())
@@ -28,7 +28,7 @@ func _on_Song2_pressed():
 func _on_Piano_toggled(button_pressed):
 	if(not locks[0]):
 		var song1load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1.tscn")
-		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")
+		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.tscn")
 		var loop1song = song1load.instance()
 		loop1song.setPlay("Piano",button_pressed)
 		loop1song.setPlay("UltraSoft",$CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/UltraSoft.pressed)
@@ -41,7 +41,7 @@ func _on_Piano_toggled(button_pressed):
 func _on_UltraSoft_toggled(button_pressed):
 	if(not locks[1]):
 		var song1load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1.tscn")
-		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")
+		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.tscn")
 		var loop2song = song1load.instance()
 		loop2song.setPlay("Piano",$CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/Piano.pressed)
 		loop2song.setPlay("UltraSoft", button_pressed)
@@ -54,7 +54,7 @@ func _on_UltraSoft_toggled(button_pressed):
 func _on_OtherParts_toggled(button_pressed):
 	if(not locks[2]):
 		var song1load = load("res://SoundStuff/EnhancedSoundManager/songs/scenes/Song1.tscn")
-		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/Transition1.tscn")
+		var transition1load = load("res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.tscn")
 		var loop3song = song1load.instance()
 		loop3song.setPlay("Piano",$CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/Piano.pressed)
 		loop3song.setPlay("UltraSoft",$CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/UltraSoft.pressed)

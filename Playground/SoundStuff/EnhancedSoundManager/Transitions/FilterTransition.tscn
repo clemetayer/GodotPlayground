@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SoundStuff/EnhancedSoundManager/Transitions/FilterTransition.gd" type="Script" id=1]
+
+[node name="FilterTransition" type="Node"]
+script = ExtResource( 1 )
+WAIT_NEXT_BAR = true
+FADE_IN_TIME = 2.0
+FADE_OUT_TIME = 2.0
