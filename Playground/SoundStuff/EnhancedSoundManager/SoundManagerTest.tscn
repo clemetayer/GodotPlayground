@@ -61,6 +61,7 @@ margin_right = 321.0
 margin_bottom = 54.0
 text = "Song 2"
 
+[connection signal="song_changed" from="SoundManager" to="." method="_on_SoundManager_song_changed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/Song 1" to="." method="_on_Song_1_pressed"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/Piano" to="." method="_on_Piano_toggled"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/UltraSoft" to="." method="_on_UltraSoft_toggled"]

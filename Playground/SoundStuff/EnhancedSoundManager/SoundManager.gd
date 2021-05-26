@@ -5,7 +5,6 @@ extends Node
 # TODO : implement loop and play_once
 # ARCHITECTURE : let the transition setup the tween ?
 # FIXME : """loud""" noise on song start/end
-# TODO : song changed signal
 # TODO : implement on next beat transition
 
 enum play_style {play_once,loop}
@@ -13,7 +12,7 @@ enum effects {amplifier,filter}
 
 export(String) var BGM_BUS = "Master"
 
-#signal song_changed(old_song,new_song)
+signal song_changed(old_song,new_song)
 
 var queue = []
 var bus_array = []
@@ -84,8 +83,10 @@ func updateTrack(song : DefaultSong, track : String, transition : TransitionTemp
 # skips to the next song with specific transition type
 func switchSong(song : DefaultSong, transition : TransitionTemplate) -> void :
 	switch_song_lock = true
+	var old_song = current_song.NAME
 	yield(removeSongs(transition),"completed")
 	addSong(song,transition)
+	emit_signal("song_changed",old_song,song.NAME)
 	switch_song_lock = false
 
 # transitions out the song if needed, returns true if fade out tween is being used for this
@@ -93,7 +94,7 @@ func removeSongs(transition : TransitionTemplate) -> void:
 	var transition_time = computeTransitionTime(transition,current_song.BPM, current_song.BEATS_PER_BAR)
 	var tween : Tween
 	for bus in bus_array:
-		tween = initTransitionTween(false,transition,bus.busName,transition_time)
+		tween = initTransitionTween(false,transition,bus.busName,transition_time,tween)
 	$Tweens.add_child(tween)
 	var _val = tween.start()
 	yield(tween,"tween_all_completed")

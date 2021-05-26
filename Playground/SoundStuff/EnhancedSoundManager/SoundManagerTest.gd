@@ -86,3 +86,7 @@ func onTrackStopped(track):
 		"OtherParts":
 			locks[2] = true
 			$CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer/OtherParts.pressed = false 
+
+
+func _on_SoundManager_song_changed(old_song, new_song):
+	print("song changed from %s to %s" % [old_song, new_song])
