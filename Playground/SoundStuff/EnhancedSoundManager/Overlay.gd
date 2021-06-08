@@ -47,6 +47,8 @@ func stopTrack(track:String) -> void:
 	var song = get_node_or_null(current_song)
 	if(song != null):
 		song.stopTrack(track)
+	if(song.isStoppedAll()): # if no track is playing, free the song
+		get_parent().removeCurrent()
 
 # starts the specified track
 func startTrack(track:String) -> void:

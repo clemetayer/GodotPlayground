@@ -7,6 +7,7 @@ class_name MainTracksTemplate
 # TODO : find a better way to tell time on a song (replace isLeadTrack)
 
 var playing = false
+var ref_track = null
 
 export(Array,Dictionary) var TRACKS setget set_tracks # info for each loop
 
@@ -17,8 +18,14 @@ func set_tracks(track):
 			track[i] = {
 				"name": String(), # name of the track
 				"play":false, # if the track should be playing or not
-				"isLeadTrack":false # idk, find something better here
+				"references":[ # reference tracks. track should start at the same playback position of the first reference that is not null and playing. Ordered.
+					NodePath()
+				] 
 			}
+		else:
+			for j in track[i].references.size():
+				if(track[i].references[j] == null):
+					track[i].references[j] = NodePath()
 	TRACKS = track
 
 # starts streams specified in LOOPS
@@ -31,8 +38,12 @@ func start() -> void:
 func startTrack(track_name : String) -> void:
 	var time = 0.0
 	for track in TRACKS:
-		if track.play and track.isLeadTrack:
-			time = get_node(track.name).get_playback_position()
+		if track.name == track_name:
+			for reference in track.references: # check every reference of the track (to setup the start time)
+				var node = get_node_or_null(reference) # gets the reference track if it exists
+				if(node != null and node is AudioStreamPlayer and node.playing):
+					time = node.get_playback_position()
+					break
 	get_node(track_name).play(time)
 	setPlay(track_name,true)
 
@@ -74,3 +85,10 @@ func isPlaying(track_name : String) -> bool:
 		if(track.name == track_name):
 			return track.play
 	return false
+
+# true if no track is playing
+func isStopped() -> bool:
+	for track in TRACKS:
+		if(track.play):
+			return false
+	return true

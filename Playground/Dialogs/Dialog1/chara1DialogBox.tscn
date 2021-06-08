@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Dialogs/CharacterDialogBox.gd" type="Script" id=1]
+[ext_resource path="res://Dialogs/Dialog1/chara1DialogBox.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -8,13 +8,13 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0.901961, 0.403922, 0.00392157, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="chara2DialogBox" type="Control"]
+[node name="chara1DialogBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -824.0
@@ -24,6 +24,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+TEXT_PATH = NodePath("Panel/TextBox/TextElements/Text")
+OPTIONS_PATH = NodePath("Panel/TextBox/TextElements/Options")
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 200.0
@@ -34,7 +36,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextMargin" type="MarginContainer" parent="Panel"]
+[node name="TextBox" type="MarginContainer" parent="Panel"]
 margin_right = 200.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 200, 150 )
@@ -46,11 +48,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="RichTextLabel" parent="Panel/TextMargin"]
+[node name="TextElements" type="VBoxContainer" parent="Panel/TextBox"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 180.0
 margin_bottom = 130.0
+
+[node name="Text" type="RichTextLabel" parent="Panel/TextBox/TextElements"]
+margin_right = 160.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 160, 80 )
 bbcode_enabled = true
 bbcode_text = "[center]Test[/center]"
 text = "Test"
@@ -59,6 +66,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Options" type="HBoxContainer" parent="Panel/TextBox/TextElements"]
+margin_top = 84.0
+margin_right = 160.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="RTLCharTimer" type="Timer" parent="."]
 autostart = true
+
 [connection signal="timeout" from="RTLCharTimer" to="." method="_on_RTLCharTimer_timeout"]

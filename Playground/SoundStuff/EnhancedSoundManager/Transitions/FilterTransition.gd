@@ -32,7 +32,7 @@ func initTransitionTween(fade_in : bool, bus_name : String, transition_time : Ar
 		var _val = tween.interpolate_property(
 					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter),
 					"cutoff_hz",
-					0,
+					1,
 					10000,
 					transition_time[0])
 	else: # fade out
@@ -40,6 +40,6 @@ func initTransitionTween(fade_in : bool, bus_name : String, transition_time : Ar
 					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter),
 					"cutoff_hz",
 					AudioServer.get_bus_effect(AudioServer.get_bus_index(bus_name), effects.filter).cutoff_hz,
-					0,
+					10,
 					transition_time[1])
 	return tween

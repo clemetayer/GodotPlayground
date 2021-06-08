@@ -1,21 +1,17 @@
 extends Node
 class_name DefaultSong
 
-enum play_style {play_once,loop}
-
 export(int) var BPM
 export(int) var BAR_NUMBER # number of bars in song
 export(int) var BEATS_PER_BAR # or time signature (4,3,2 are the most common)
 export(NodePath) var MAIN_TRACKS # path to the main song to play
-export(play_style) var PLAY_STYLE # play style
 export(String) var NAME # name of the song
 
 signal beat(number)
-signal bar(number)
+signal bar()
 
 var timer : Timer
 var beat_num : int
-var bar_num : int
 
 # sets the beat timer
 func _ready():
@@ -24,7 +20,6 @@ func _ready():
 	timer.wait_time = 60.0/BPM
 	var _err = timer.connect("timeout",self,"beatProcess")
 	beat_num = 1
-	bar_num = 1
 
 # plays the song with parameters in MAIN_LOOPS
 func play() -> void:
@@ -51,6 +46,9 @@ func setBusOnTrack(track:String,bus:String) -> void:
 # stops the specified track
 func stopTrack(track:String) -> void:
 	get_node(MAIN_TRACKS).stopTrack(track)
+	if(get_node(MAIN_TRACKS).isStopped()):
+		timer.stop()
+		beat_num = 1
 
 # starts the specified track
 func startTrack(track:String) -> void:
@@ -71,6 +69,10 @@ func getTrackList() -> Array:
 func isPlaying(track:String) -> bool:
 	return get_node(MAIN_TRACKS).isPlaying(track)
 
+# true if all tracks are stopped
+func isStoppedAll() -> bool:
+	return get_node(MAIN_TRACKS).isStopped()
+
 # triggered on each beat
 func beatProcess():
 	if(beat_num == BEATS_PER_BAR):
@@ -82,5 +84,4 @@ func beatProcess():
 
 # triggered on each bar
 func barProcess():
-	bar_num += 1
-	emit_signal("bar",bar_num)
+	emit_signal("bar")

@@ -16,17 +16,17 @@ NAME = "Song1"
 [node name="MainTracks" type="Node" parent="."]
 script = ExtResource( 2 )
 TRACKS = [ {
-"isLeadTrack": true,
 "name": "Piano",
-"play": false
+"play": false,
+"references": [  ]
 }, {
-"isLeadTrack": false,
 "name": "UltraSoft",
-"play": false
+"play": false,
+"references": [ NodePath("Piano") ]
 }, {
-"isLeadTrack": false,
 "name": "OtherParts",
-"play": false
+"play": false,
+"references": [ NodePath("Piano"), NodePath("UltraSoft") ]
 } ]
 
 [node name="Piano" type="AudioStreamPlayer" parent="MainTracks"]

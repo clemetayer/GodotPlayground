@@ -14,6 +14,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://SoundStuff/EnhancedSoundManager/songs/scenes/DefaultSong.gd"
 }, {
+"base": "Control",
+"class": "DialogBoxTemplate",
+"language": "GDScript",
+"path": "res://Dialogs/Dialog1/DialogBoxTemplate.gd"
+}, {
+"base": "DialogBoxTemplate",
+"class": "DialogChoicesTemplate",
+"language": "GDScript",
+"path": "res://Dialogs/Dialog1/DialogChoicesTemplate.gd"
+}, {
+"base": "Node",
+"class": "DialogManager",
+"language": "GDScript",
+"path": "res://Dialogs/Dialog1/DialogManager.gd"
+}, {
 "base": "Node",
 "class": "MainTracksTemplate",
 "language": "GDScript",
@@ -23,6 +38,11 @@ _global_script_classes=[ {
 "class": "RichTextSleep",
 "language": "GDScript",
 "path": "res://BBCodeThings/SleepRTL.gd"
+}, {
+"base": "Node",
+"class": "SceneTemplate",
+"language": "GDScript",
+"path": "res://GlobalStuff/SceneTemplate.gd"
 }, {
 "base": "Node",
 "class": "SongTemplate",
@@ -36,8 +56,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DefaultSong": "",
+"DialogBoxTemplate": "",
+"DialogChoicesTemplate": "",
+"DialogManager": "",
 "MainTracksTemplate": "",
 "RichTextSleep": "",
+"SceneTemplate": "",
 "SongTemplate": "",
 "TransitionTemplate": ""
 }
@@ -50,6 +74,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SignalManager="*res://SignalManager.tscn"
+GlobalFunctions="*res://GlobalStuff/GlobalFunctions.gd"
 
 [editor_plugins]
 
@@ -62,6 +87,11 @@ next_dialog={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":78,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[locale]
+
+locale_filter=[ 0, [  ] ]
+translations=PoolStringArray( "res://GlobalStuff/Localization/Translation.en.translation", "res://GlobalStuff/Localization/Translation.fr.translation" )
 
 [rendering]
 
