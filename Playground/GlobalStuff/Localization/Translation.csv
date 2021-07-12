@@ -1,11 +1,15 @@
 ,en,fr
-UI,,
-DialogTests_StartDialogsButton-text,start dialog test,démarrer le test du dialogue
-DialogTests_StartCharactersButton-text,start characters test,démarrer le test des personnages
 DialogTests ,,
+UI,,
+DialogTests_StartDialogsButton-text,start dialog test,dÃ©marrer le test du dialogue
+DialogTests_StartCharactersButton-text,start characters test,dÃ©marrer le test des personnages
+DialogTests_StopDialogsButton-text,stop dialog test,arrÃªter le test du dialogue
+DialogTests_StopCharactersButton-text,stop characters test,arrÃªter le test des personnages
+DialogTests_MethodTriggerButton-text ,trigger method on dialog boxes,dÃ©clencher la mÃ©thode sur les boÃ®tes de dialogue
+DialogTests_SkipLoopButton-text,skip loop,sortir de la boucle
 Narrator,,
-DialogTests_DialogNarrator-1-1,This is a first test for dialogs,Ceci est un premier test pour les dialogues
-DialogTests_DialogNarrator-2-1,"This is a test with dialogs on multiple pages : S88 provides a consistent set of standards and terminology for batch control and defines the physical model, procedures, and recipes. The standard sought to address the following problems: lack of a universal model for batch control, difficulty in communicating user requirement, integration among batch automation suppliers, difficulty in batch control configuration.
+DialogTests_DialogNarrator-1,This is a first test for dialogs,Ceci est un premier test pour les dialogues
+DialogTests_DialogNarrator-2,"This is a test with dialogs on multiple pagesÂ : S88 provides a consistent set of standards and terminology for batch control and defines the physical model, procedures, and recipes. The standard sought to address the following problems: lack of a universal model for batch control, difficulty in communicating user requirement, integration among batch automation suppliers, difficulty in batch control configuration.
 
 The standard defines a process model which consists of a process which consists of an ordered set of process stages which consist of an ordered set of process operations which consist of an ordered set of process actions.
 
@@ -13,26 +17,30 @@ The physical model begins with the enterprise which may contain a site which may
 
 The procedural control model consists of recipe procedures which consist of an ordered set of unit procedures which consist of an ordered set of operations which consist of an ordered set of phases. Some of these levels may be excluded.
 
-Recipes can have the following types: general, site, master, control. The contents of the recipe include: header, formula, equipment requirements, procedure, and other information required to make the recipe. ","Ceci est un test avec un dialogue sur plusieurs pages : ANSI/ISA-88.00.0x est une norme américaine développée par l'ISA au sein du comité ISA88. Elle est également publiée comme norme internationale CEI 61512 par la CEI au sein du comité SC65A.
+Recipes can have the following types: general, site, master, control. The contents of the recipe include: header, formula, equipment requirements, procedure, and other information required to make the recipe. ","Ceci est un test avec un dialogue sur plusieurs pagesÂ : ANSI/ISA-88.00.0x est une norme amÃ©ricaine dÃ©veloppÃ©e par l'ISA au sein du comitÃ© ISA88. Elle est Ã©galement publiÃ©e comme norme internationale CEI 61512 par la CEI au sein du comitÃ© SC65A.
 
-La mission initiale du comité ISA88 était de « définir des standards et pratiques recommandés pour la conception et la spécification des systèmes de contrôle des procédés de fabrication par lots (batch) mis en œuvre dans les industries de process ».
+La mission initiale du comitÃ© ISA88 Ã©tait de Â« dÃ©finir des standards et pratiques recommandÃ©s pour la conception et la spÃ©cification des systÃ¨mes de contrÃ´le des procÃ©dÃ©s de fabrication par lots (batch) mis en Å“uvre dans les industries de process Â».
 
-Le périmètre de la norme s'est depuis étoffé dans la pratique avec la définition de modèles de données pour l'interopérabilité entre systèmes et la structuration des données de production ainsi que la spécification des transformations physico-chimiques du produit, établissant le lien avec le PLM (Product Lifecycle Management).
+Le pÃ©rimÃ¨tre de la norme s'est depuis Ã©toffÃ© dans la pratique avec la dÃ©finition de modÃ¨les de donnÃ©es pour l'interopÃ©rabilitÃ© entre systÃ¨mes et la structuration des donnÃ©es de production ainsi que la spÃ©cification des transformations physico-chimiques du produit, Ã©tablissant le lien avec le PLM (Product Lifecycle Management).
 
-La pratique réelle, les évolutions en cours et l'absence de standards équivalents la positionne comme référence universelle pour la conception fonctionnelle du contrôle de tous les procédés industriels au-delà des procédés de type « batch ». "
-DialogTests_DialogNarrator-3-1,Choose an option for this dialog : ,Choisissez une option pour ce dialogue
+La pratique rÃ©elle, les Ã©volutions en cours et l'absence de standards Ã©quivalents la positionne comme rÃ©fÃ©rence universelle pour la conception fonctionnelle du contrÃ´le de tous les procÃ©dÃ©s industriels au-delÃ  des procÃ©dÃ©s de type Â« batch Â». "
+DialogTests_DialogNarrator-3,Choose an option for this dialogÂ : ,Choisissez une option pour ce dialogue
 DialogTests_DialogNarrator-3-opt-1,Option 1,Option 1
 DialogTests_DialogNarrator-3-opt-2,Option 2,Option 2
-DialogTests_DialogNarrator-4-1,You chose « Option 1 » !,Vous avez choisi « Option 1 » !
-DialogTests_DialogNarrator-4-2,You chose « Option 2 » !,Vous avez choisi « Option 2 » !
+DialogTests_DialogNarrator-4-1,You chose Â« Option 1Â Â»Â !,Vous avez choisi Â«Â Option 1Â Â»Â !
+DialogTests_DialogNarrator-4-2,You chose Â« Option 2 Â»Â !,Vous avez choisi Â«Â Option 2Â Â»Â !
 Characters,,
-DialogTests_DialogCharacters-1-1,Hello character 2 !,Bonjour personnage 2 !
-DialogTests_DialogCharacters-1-2,Hello character 1 !,Bonjour personnage 1 !
-DialogTests_DialogCharacters-2-1,We can say the same thing at the same time !,On peut dire des choses en même temps !
-DialogTests_DialogCharacters-3-1,Or say different things …,Ou dire des choses différentes …
-DialogTests_DialogCharacters-3-2,… at the same time !,… en même temps !
-DialogTests_DialogCharacters-4-1,Now I will say a slur ! Here i go !,"Maintenant, je vais dire une insulte ! C’est parti !"
-DialogTests_DialogCharacters-4-2,Fuck !,Putain !
-DialogTests_DialogCharacters-4-3,Don’t.,Non.
-DialogTests_DialogCharacters-5-1,This message will loop until you click the button.,Je vais répéter ce message jusqu’à ce que tu cliques sur ce bouton.
-DialogTests_DialogCharacters-5-2,Congratulations ! An external event triggered something probably very cool !,Félicitations ! Un évènement extérieur a déclenché quelque chose de probablement très cool !
+DialogTests_DialogCharacters-1,Hello character 2Â !,Bonjour personnage 2Â !
+DialogTests_DialogCharacters-2,Hello character 1Â !,Bonjour personnage 1Â !
+DialogTests_DialogCharacters-3,We can say the same thing at the same timeÂ !,On peut dire des choses en mÃªme tempsÂ !
+DialogTests_DialogCharacters-4-1,Or say different things â€¦,Ou dire des choses diffÃ©rentes â€¦
+DialogTests_DialogCharacters-4-2,â€¦ at the same timeÂ !,â€¦ en mÃªme tempsÂ !
+DialogTests_DialogCharacters-5,Now I will say a slurÂ ! Here i goÂ !,"Maintenant, je vais dire une insulteÂ ! Câ€™est partiÂ !"
+DialogTests_DialogCharacters-6,HeckÂ !,FichtreÂ !
+DialogTests_DialogCharacters-7,Donâ€™t.,Non.
+DialogTests_DialogCharacters-8,This message will loop until you click the button.,Je vais rÃ©pÃ©ter ce message jusquâ€™Ã  ce que tu cliques sur ce bouton.
+DialogTests_DialogCharacters-9,CongratulationsÂ ! You got out of the loop,FÃ©licitationsÂ ! Tu est sorti de la boucleÂ !
+UnitTests,,
+Dialog1,,
+tests_Dialog1_DialogChoiceTemplate_choice1,Choice 1,Choix 1
+tests_Dialog1_DialogChoiceTemplate_choice2,Choice 2,Choix 2

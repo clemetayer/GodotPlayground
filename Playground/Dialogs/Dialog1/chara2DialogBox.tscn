@@ -59,8 +59,3 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="RTLCharTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="RTLCharTimer" to="." method="_on_RTLCharTimer_timeout"]

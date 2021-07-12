@@ -1,4 +1,4 @@
-extends DialogBox
+extends DialogBoxChoices
 
 ##### PROCESSING #####
 # Called when the node enters the scene tree for the first time.
@@ -12,4 +12,4 @@ extends DialogBox
 ##### USER FUNCTIONS #####
 # a method to test method triggering in dialogs
 func testMethod(arg1 : int, arg2 : String):
-	print("Method on chara 2 triggered : [%d,%s]" % [arg1,arg2])
+	print("Method on narrator triggered : [%d,%s]" % [arg1,arg2])

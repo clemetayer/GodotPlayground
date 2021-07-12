@@ -1,8 +1,16 @@
 # Added things
+# Music
 **.wav
 **.ogg
+# Editor
+**.vscode
+# Imports
 **.import
+# Addons
 Playground/addons/
+Playground/gdUnit3-examples/
+Playground/runtest.cmd
+Playground/runtest.sh
 
 # Godot-specific ignores
 .import/

@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<testsuites failures="0" name="TestXML" tests="6" time="0">
+	<testsuite name="Dialog box template tests" failures="0"  tests="6" time="0">
+		<testcase name="Test of the 'nextChar' function" time="0"></testcase>
+		<testcase name="Test of the dialog on a single page without skipping" time="0"></testcase>
+		<testcase name="Test of the dialog on a single page with skipping" time="0"></testcase>
+		<testcase name="Test of the 'computeDialogPages' function" time="0"></testcase>
+		<testcase name="Test of the 'readyFunction'" time="0"></testcase>
+		<testcase name="Test of the dialog on a multiple pages" time="0"></testcase>
+	</testsuite>
+
+	<testsuite name="Dialog choices template tests" failures="0"  tests="8" time="0">
+		<testcase name="Test setChoices function" time="0"></testcase>
+		<testcase name="Test dialog choice" time="0"></testcase>
+		<testcase name="Test of the 'nextChar' function" time="0"></testcase>
+		<testcase name="Test of the dialog on a single page without skipping" time="0"></testcase>
+		<testcase name="Test of the dialog on a single page with skipping" time="0"></testcase>
+		<testcase name="Test of the 'computeDialogPages' function" time="0"></testcase>
+		<testcase name="Test of the 'readyFunction'" time="0"></testcase>
+		<testcase name="Test of the dialog on a multiple pages" time="0"></testcase>
+	</testsuite>
+
+	<testsuite name="Dialog node tests" failures="0"  tests="3" time="0">
+		<testcase name="Test of a one step dialog" time="0"></testcase>
+		<testcase name="Test of the function triggerMethodOnDialog" time="0"></testcase>
+		<testcase name="Test of the stopDialog function" time="0"></testcase>
+	</testsuite>
+
+	<testsuite name="Test of a dialog cancel node" failures="0"  tests="1" time="0">
+		<testcase name="Test of a dialog cancelled by a timer" time="0"></testcase>
+	</testsuite>
+
+	<testsuite name="Dialog node choices tests" failures="0"  tests="1" time="0">
+		<testcase name="Test of the dialog with choices function" time="0"></testcase>
+	</testsuite>
+
+	<testsuite name="Test of the dialog tree template" failures="0"  tests="6" time="0">
+		<testcase name="Test of a choice dialog" time="0"></testcase>
+		<testcase name="Test of multiple start points" time="0"></testcase>
+		<testcase name="Test of the stopCurrentDialogs function" time="0"></testcase>
+		<testcase name="Loop dialog test" time="0"></testcase>
+		<testcase name="Single dialog test" time="0"></testcase>
+		<testcase name="Chained dialog test" time="0"></testcase>
+	</testsuite>
+
+</testsuites>

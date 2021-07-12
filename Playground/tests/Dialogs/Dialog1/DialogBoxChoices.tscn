@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tests/Dialogs/Dialog1/DialogBoxChoicesTest.gd" type="Script" id=1]
+[ext_resource path="res://tests/Dialogs/Dialog1/VoiceSound.wav" type="AudioStream" id=2]
+
+[node name="DialogChoicesTemplate" type="VBoxContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+TEXT_PATH = NodePath("Center/Text")
+CHAR_SOUND = ExtResource( 2 )
+OPTIONS_PATH = NodePath("HBoxContainer")
+
+[node name="Center" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Text" type="RichTextLabel" parent="Center"]
+margin_left = 312.0
+margin_right = 712.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 400, 150 )
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 154.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

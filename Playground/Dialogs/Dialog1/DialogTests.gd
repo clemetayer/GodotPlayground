@@ -1,29 +1,31 @@
 extends Node
 
+func _ready():
+	$Buttons/SkipLoopCenter/SkipLoopButton.hide()
+
+func _on_SkipLoopButton_pressed():
+	get_node("Dialogs/Characters/8").NEXT_DIALOGS[0] = "../9"
+
+func _on_7_dialog_done():
+	$Buttons/SkipLoopCenter/SkipLoopButton.show()
+
+func _on_9_dialog_done():
+	$Buttons/SkipLoopCenter/SkipLoopButton.hide()	
+	get_node("Dialogs/Characters/8").NEXT_DIALOGS[0] = "."
+
+func _on_MethodTriggerButton_pressed():
+	$Dialogs/Narrator.triggerMethodOnCurrentDialogs("testMethod",[12,"test"])
+	$Dialogs/Characters.triggerMethodOnCurrentDialogs("testMethod",[12,"test"])
+
 func _on_StartDialogsButton_pressed():
-	$DialogManagerNarrator.startDialog()
+	$Dialogs/Narrator.startDialogs()
 
 func _on_StartCharactersButton_pressed():
-	$DialogManagerCharacters.startDialog()
+	$Dialogs/Characters.startDialogs()
 
-func _on_DialogManager_dialogs_done():
-	print("Dialogs narrator done !")
+func _on_StopDialogsButton_pressed():
+	$Dialogs/Narrator.stopCurrentDialogs()
 
-func _on_DialogManagerCharacters_dialogs_done():
-	# TODO : character 1 speaking into character 2 speaking (in same dialog)
-	# character 1 cancels character 2
-	# character 1 then character 2 but with an external button press (tests triggerMethod and instant_start)
-	# both characters speaking at the same time (same dialog)
-	# both characters speaking at the same time (different dialog)
-	# method trigerring that does domething : button showing that makes the dialog loop until button pressed
-	# external event that cancels current dialogs
-	print("Dialogs characters done !")
 
-func _on_DialogManagerNarrator_custom_signal(name, value):
-	match(name):
-		"Narrator-3-1":
-			match(value):
-				1:
-					$DialogManagerNarrator.startNextOnNames(["Narrator-4-1"])
-				2:
-					$DialogManagerNarrator.startNextOnNames(["Narrator-4-2"])
+func _on_StopCharactersButton_pressed():
+	$Dialogs/Characters.stopCurrentDialogs()

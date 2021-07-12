@@ -1,5 +1,5 @@
 extends Control
-class_name DialogBoxTemplate
+class_name DialogBox
 
 export(float) var TEXT_SPEED = 0.05 # timeout time before showing another character
 export(String) var DIALOG = "" # dialog string
@@ -13,6 +13,8 @@ var dialog_pages = [] # pages of dialog if the whole dialog doesn't fit in one p
 var page = 0 # current dialog page
 var RTL_char_timer = Timer # timer to display characters
 var sound = AudioStreamPlayer2D # stream of CHAR_SOUND
+
+var test_emulate_next_dialog_key = false # key to emulate skipping to the next dialog, for unitary testing purposes
 
 onready var RTL = get_node(TEXT_PATH) # Rich text label access shortcut because it is accessed a lot
 
@@ -73,15 +75,15 @@ func computeDialogPages():
 
 # triggered when RTL char timer is timeout
 func nextChar():
-	RTL.set_visible_characters(RTL.get_visible_characters()+1)
-	if(dialog_started and RTL.get_visible_characters() <= RTL.get_total_character_count()):
+	if(dialog_started and RTL.get_visible_characters() < RTL.text.length()):
+		RTL.set_visible_characters(RTL.get_visible_characters()+1)
 		sound.play()
 
 # special function process to allow overriding in children
 func processFunction(_delta):
 	if(dialog_started):
-		if(Input.is_action_just_pressed("next_dialog")):
-			if (RTL.get_visible_characters() > RTL.get_total_character_count()): 
+		if(Input.is_action_just_pressed("next_dialog") or test_emulate_next_dialog_key):
+			if (RTL.get_visible_characters() >= RTL.text.length()): 
 				if page < len(dialog_pages)-1:
 					page += 1
 					RTL.set_visible_characters(0)
@@ -93,7 +95,7 @@ func processFunction(_delta):
 					self.hide()
 					emit_signal("dialog_done")
 			else: # shows the whole text at once
-				RTL.set_visible_characters(RTL.get_total_character_count())
+				RTL.set_visible_characters(RTL.text.length())
 
 # special function ready to allow overriding in children
 func readyFunction():

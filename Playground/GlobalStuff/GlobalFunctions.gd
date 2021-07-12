@@ -1,3 +1,4 @@
+tool # tool set for test purposes
 extends Node
 
 # Called when the node enters the scene tree for the first time.
